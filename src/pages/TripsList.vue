@@ -4,15 +4,18 @@
     :titleText="'Select a package or create your own'"
     :itemPosition="'left'">
     </vo-header>
+    <vo-card-list>
+    </vo-card-list>
   </div>
 </template>
 
 <script>
 import { mapActions } from 'vuex'
-import { Header } from '../components'
+import { Header, CardList } from '../components'
 export default {
   components: {
-    voHeader: Header
+    voHeader: Header,
+    voCardList: CardList
   },
   methods: {
     ...mapActions('trips', ['getTrips'])
