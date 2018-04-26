@@ -1,6 +1,6 @@
 <template lang="html">
   <SvgPanZoom
-       style="width: 500px; height: 500px; border:1px solid black;"
+       style="width: 500px; height: 500px;"
        :zoomEnabled="true"
        :controlIconsEnabled="true"
        :fit="false"

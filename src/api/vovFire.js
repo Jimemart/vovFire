@@ -34,7 +34,14 @@ export const vovFire = {
         resolve(snapshot.val())
       })
     })
-
+  },
+  getTrips() {
+    return new Promise((resolve, reject) => {
+      firebase.database().ref('/trips').once('value')
+      .then((snapshot) => {
+        resolve(snapshot.val())
+      })
+    })
   }
 }
 

@@ -1,5 +1,5 @@
 <template>
-  <div id="home">
+  <div id="home" style="overflow:hidden;">
     <vo-header
     :titleText="'Where do you want to travel to?'"
     :itemPosition="'left'"
@@ -12,11 +12,16 @@
     <vo-map
     :selectedCountries="selectedCountries">
     </vo-map>
+    <vo-next
+    :condition="countriesLength"
+    :route="'offers'"
+    :shape="'circle'">
+    </vo-next>
   </div>
 </template>
 
 <script>
-import { Header, Map } from '../components'
+import { Header, Map, Next } from '../components'
 import { mapActions } from 'vuex'
 export default {
   data () {
@@ -36,7 +41,8 @@ export default {
   },
   components: {
     voHeader: Header,
-    voMap: Map
+    voMap: Map,
+    voNext: Next
   },
   computed: {
     foundCountries: {
@@ -44,6 +50,9 @@ export default {
     },
     selectedCountries: {
       get () { return this.$store.state.countries.selected }
+    },
+    countriesLength : {
+      get () { return this.$store.state.countries.selected.length > 0}
     }
   },
   mounted () {

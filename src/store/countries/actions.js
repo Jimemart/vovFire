@@ -1,6 +1,6 @@
 import vovFire from '../../api/vovFire'
 
-export const getCountries = ({ commit, state}) => {
+export const getCountries = ({ commit }) => {
   return new Promise((resolve, reject) => {
     vovFire.getCountries()
       .then((res) => {
@@ -10,7 +10,7 @@ export const getCountries = ({ commit, state}) => {
   })
 }
 
-export const filterCountries = ({ commit, state }, value) => {
+export const filterCountries = ({ commit }, value) => {
   return new Promise((resolve, reject) => {
     console.log(value)
     if(value.length > 2){
