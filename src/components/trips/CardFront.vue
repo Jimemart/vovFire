@@ -6,11 +6,15 @@
 
     </div>
     <div class="content">
-      <h5>{{trip.name}}</h5>
-      <p class="text-faded">
-        <span v-for="(country, index) in trip.countries">{{country.name}}<span v-if="index < trip.countries.length - 1"> - </span> </span>
-      </p>
-
+      <div class="info">
+        <h5>{{trip.name}}</h5>
+        <p class="text-faded">
+          <span v-for="(country, index) in trip.countries">{{country.name}}<span v-if="index < trip.countries.length - 1"> - </span> </span>
+        </p>
+      </div>
+      <div class="special">
+        <p> <q-icon :name="$t(`icons.${trip.places[0].type}`)"/>{{trip.places[0].ammount}} {{trip.places[0].type}}</p>
+      </div>
     </div>
   </q-card-main>
   <q-card-actions align="around">
