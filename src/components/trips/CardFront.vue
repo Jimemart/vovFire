@@ -3,7 +3,6 @@
     <q-card>
   <q-card-main>
     <div class="img" :style="background">
-
     </div>
     <div class="content">
       <div class="info">
@@ -21,7 +20,6 @@
     <p class="price"><q-icon name="account_balance_wallet"/> {{trip.price}}€</p>
     <p class="date"><q-icon name="date_range"/>{{trip.date}}</p>
     <p class="rate"><q-icon name="star"/>{{trip.rate}}</p>
-
   </q-card-actions>
 </q-card>
   </div>
@@ -34,9 +32,6 @@ export default {
     return {
       background: 'background-image: url("'+ this.trip.image +'");'
     }
-  },
-  mounted () {
-    console.log(this.trip)
   }
 }
 </script>

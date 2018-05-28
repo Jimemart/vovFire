@@ -1,0 +1,19 @@
+#cardList
+  .flipper
+    transition: 0.4s
+    transform-style: preserve-3d
+    position: relative
+    perspective:500
+  .front, .back
+    width: 100%
+  	 backface-visibility: hidden
+  	 position: absolute
+  	 top: 0
+  	 left: 0
+
+  .front
+    z-index: 2
+    transform: rotateY(0deg)
+
+  .back
+    transform: rotateY(180deg)
