@@ -10,6 +10,7 @@
     :selectedElems="selectedCountries">
     </vo-header>
     <vo-map
+    :centerCountry="centerCountry"
     :selectedCountries="selectedCountries">
     </vo-map>
     <vo-next
@@ -28,12 +29,14 @@ export default {
     return {
       loading: true,
       title: 'Where do you want to travel from?',
-      searchBar: true
+      searchBar: true,
+      centerCountry: false
     }
   },
   methods: {
     ...mapActions('countries', ['getCountries', 'filterCountries']),
     pickOneCountry(val){
+      this.centerCountry = true
       this.$store.commit('countries/SET_SELECTED', val)
       this.$store.commit('countries/UNSET_FILTERED')
       this.$store.commit('useful/SET_INPUT', '')

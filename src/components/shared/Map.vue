@@ -1,10 +1,11 @@
 <template lang="html">
   <SvgPanZoom
+       @svgpanzoom="registerSvgPanZoom"
        style="width: 500px; height: 500px;"
        :zoomEnabled="true"
        :controlIconsEnabled="true"
        :fit="false"
-       :center="true"
+       :center="false"
    >
   <svg
      xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -1530,14 +1531,26 @@
 import SvgPanZoom from 'vue-svg-pan-zoom'
 
 export default {
+  data () {
+    return {
+      svgPanZoom: null
+    }
+  },
   props: {
-    selectedCountries: { type: Array, default: []}
+    selectedCountries: { type: Array, default: []},
+    centerCountry: { type: Boolean, default: false}
   },
   components: {
     SvgPanZoom
   },
+  methods: {
+       registerSvgPanZoom(svgpanzoom) {
+           this.svgPanZoom = svgpanzoom;
+       }
+  },
   watch: {
     selectedCountries(n, o) {
+      console.log(this.centerCountry)
         n.forEach((elem, index) => {
           const inMap = document.getElementById(`${elem.code}`)
           document.getElementById(`linear${index}`).children[0].setAttribute('stop-color', elem.firstColor)
@@ -1545,6 +1558,13 @@ export default {
           inMap.style.fill= `url(#linear${index})`
           inMap.style.stroke = 'white'
         })
+    },
+    centerCountry(n, o) {
+      console.log('aqui')
+      if (n) {
+        console.log(n)
+        this.svgPanZoom.zoomAtPoint(100, {x: 1000, y: 200})
+      }
     }
   }
 }

@@ -38,7 +38,7 @@ export default {
     flip (i) {
       if(this.flippedCard != null) {
         const holder = document.getElementById(`flipper-${this.flippedCard}`)
-        holder.style.transform = 'rotateY(180deg)'
+        holder.style.transform = 'rotateY(0deg)'
 
         const container = document.getElementById(`flip-container-${this.flippedCard}`)
         container.style.height = '260px'
