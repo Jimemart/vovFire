@@ -12,7 +12,7 @@
         </p>
       </div>
       <div class="special">
-        <p> <q-icon :name="$t(`icons.${trip.places[0].type}`)"/>{{trip.places[0].ammount}} {{trip.places[0].type}}</p>
+        <p> <q-icon :name="$t(`icons.${trip.places[0].type}.str`)"/>{{trip.places[0].ammount}} {{trip.places[0].type}}</p>
       </div>
     </div>
   </q-card-main>

@@ -1,14 +1,13 @@
 <template lang="html">
-  <vo-swipper :options="swiperOption">
-    <vo-slide v-for="(elem, i) in info" :key="i">
-      Hola
-    </vo-slide>
-  </vo-swipper>
+      <div id="places">
+        <div class="place" v-for="(elem, i) in info">
+          <div class="icon" :style="'background:' + $t(`icons.${elem.type}.color`)"><q-icon :name="$t(`icons.${elem.type}.str`)"/></div>
+          <p>{{elem.ammount}} {{elem.type}}</p>
+        </div>
+      </div>
 </template>
 
 <script>
-import 'swiper/dist/css/swiper.css'
-import { swiper, swiperSlide } from 'vue-awesome-swiper'
 export default {
 
   props: ['info'],
@@ -24,13 +23,6 @@ export default {
          }
        }
      }
-  },
-  components: {
-    voSwipper: swiper,
-    voSlide: swiperSlide
-  },
-  mounted () {
-    console.log(this.info)
   }
 }
 </script>

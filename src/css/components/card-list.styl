@@ -1,13 +1,17 @@
 #cardList
+  .flip-container
+    height:260px
   .flipper
     transition: 0.4s
     transform-style: preserve-3d
     position: relative
     perspective:500
+    height:260px
+    
   .front, .back
     width: 100%
   	 backface-visibility: hidden
-  	 position: absolute
+  	 position: relative
   	 top: 0
   	 left: 0
 
@@ -17,3 +21,43 @@
 
   .back
     transform: rotateY(180deg)
+    top: -249px
+
+  #places
+    display: flex
+    justify-content: space-between
+    .place
+      text-align: center
+    .icon
+      margin: 0 auto
+      padding: 10px
+      border-radius 50%
+      background: green
+      display: inline-block
+      color: white
+
+  #accordion
+    .holder
+      background-image: linear-gradient(to bottom, #33276d, #372a76, #3a2c7e, #3e2f87, #423290);
+      padding: 10px
+      color: white
+
+      p
+        margin-bottom: 0
+
+  #actionBtn
+    display:flex
+    color:white
+    .left
+      background: #4F409B
+      width: 70%
+      text-align: center
+      p
+      padding-top: 10px
+    .right
+      background-image: linear-gradient(to right, #ed53c4, #e746c3, #e138c2, #da26c1, #d30ac1);
+      width:30%
+      text-align: center
+      vertical-align: -webkit-baseline-middle
+      .q-icon
+        padding-top:12px

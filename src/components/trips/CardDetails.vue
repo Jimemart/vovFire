@@ -15,16 +15,27 @@
       </vo-slider>
     </div>
   </q-card-main>
+  <div>
+    <vo-accordion
+    :cities="trip.cities">
+    </vo-accordion>
+    <vo-action-btn>
+    </vo-action-btn>
+  </div>
 </q-card>
   </div>
 </template>
 
 <script>
 import Slider from '../shared/Slider'
+import Accordion from '../shared/Accordion'
+import ActionBtn from '../shared/ActionBtn'
 export default {
   props: ['trip'],
   components: {
-    voSlider: Slider
+    voSlider: Slider,
+    voAccordion: Accordion,
+    voActionBtn: ActionBtn
   },
   mounted () {
     console.log(this.trip)
