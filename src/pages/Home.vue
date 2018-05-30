@@ -3,7 +3,7 @@
     <vo-header
     :titleText="'Where do you want to travel to?'"
     :itemPosition="'left'"
-    @input="filterCountries($event)"
+    @input="filterCountriesAndDeleteCenter($event)"
     @selected="pickOneCountry($event)"
     :found="foundCountries"
     :searchBar="true"
@@ -11,6 +11,7 @@
     </vo-header>
     <vo-map
     :centerCountry="centerCountry"
+    :whereTo="code"
     :selectedCountries="selectedCountries">
     </vo-map>
     <vo-next
@@ -30,16 +31,22 @@ export default {
       loading: true,
       title: 'Where do you want to travel from?',
       searchBar: true,
-      centerCountry: false
+      centerCountry: false,
+      code: null
     }
   },
   methods: {
     ...mapActions('countries', ['getCountries', 'filterCountries']),
     pickOneCountry(val){
       this.centerCountry = true
+      this.code = val.code
       this.$store.commit('countries/SET_SELECTED', val)
       this.$store.commit('countries/UNSET_FILTERED')
       this.$store.commit('useful/SET_INPUT', '')
+    },
+    filterCountriesAndDeleteCenter (event) {
+      this.centerCountry = false
+      this.filterCountries(event)
     }
   },
   components: {

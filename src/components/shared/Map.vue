@@ -6,6 +6,7 @@
        :controlIconsEnabled="true"
        :fit="false"
        :center="false"
+       id="svg"
    >
   <svg
      xmlns:dc="http://purl.org/dc/elements/1.1/"
@@ -1533,12 +1534,14 @@ import SvgPanZoom from 'vue-svg-pan-zoom'
 export default {
   data () {
     return {
+      alreadyZoomed: false,
       svgPanZoom: null
     }
   },
   props: {
     selectedCountries: { type: Array, default: []},
-    centerCountry: { type: Boolean, default: false}
+    centerCountry: { type: Boolean, default: false},
+    whereTo: { type: String }
   },
   components: {
     SvgPanZoom
@@ -1550,7 +1553,6 @@ export default {
   },
   watch: {
     selectedCountries(n, o) {
-      console.log(this.centerCountry)
         n.forEach((elem, index) => {
           const inMap = document.getElementById(`${elem.code}`)
           document.getElementById(`linear${index}`).children[0].setAttribute('stop-color', elem.firstColor)
@@ -1560,10 +1562,13 @@ export default {
         })
     },
     centerCountry(n, o) {
-      console.log('aqui')
       if (n) {
-        console.log(n)
-        this.svgPanZoom.zoomAtPoint(100, {x: 1000, y: 200})
+        const country = document.getElementById(this.whereTo)
+        const svg = document.getElementById('svg').getBoundingClientRect()
+        const coords = country.getBoundingClientRect()
+        this.svgPanZoom.panBy({x: (-coords.left + 250) / 2, y: (svg.top - coords.top + 270) / 2})
+        if(!this.alreadyZoomed) this.svgPanZoom.zoom(2.2)
+        this.alreadyZoomed = true
       }
     }
   }
