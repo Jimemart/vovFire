@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="actionBtn">
-    <div class="left" @click="clickDetails">
+    <div class="left" @click="clickDetails" :style="'background:'+background+'; color:'+ color +';'">
       <p>{{this.left}}</p>
     </div>
     <div class="right" @click="clickGo">
@@ -13,7 +13,9 @@
 export default {
   props: {
     left: { type: String, default: 'View details about tour'},
-    right: { type: String, default: 'arrow_forward'}
+    right: { type: String, default: 'arrow_forward'},
+    background: {type: String, default: '#4F409B'},
+    color: { type: String, default: 'black'}
   },
   methods: {
     clickDetails () {

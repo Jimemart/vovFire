@@ -1,4 +1,5 @@
 <template lang="html">
+  <div id="map">
   <SvgPanZoom
        @svgpanzoom="registerSvgPanZoom"
        style="width: 500px; height: 500px;"
@@ -1525,7 +1526,7 @@
        style="fill:#2a3f63;fill-rule:evenodd" />
   </svg>
 </SvgPanZoom>
-
+</div>
 </template>
 
 <script>
@@ -1547,9 +1548,10 @@ export default {
     SvgPanZoom
   },
   methods: {
-       registerSvgPanZoom(svgpanzoom) {
-           this.svgPanZoom = svgpanzoom;
-       }
+   registerSvgPanZoom(svgpanzoom) {
+       this.svgPanZoom = svgpanzoom;
+       this.svgPanZoom.panBy({x:-400, y: -30})
+   }
   },
   watch: {
     selectedCountries(n, o) {
@@ -1560,8 +1562,12 @@ export default {
         const country = document.getElementById(this.whereTo)
         const svg = document.getElementById('svg').getBoundingClientRect()
         const coords = country.getBoundingClientRect()
-        this.svgPanZoom.panBy({x: (-coords.left + 250) / 2, y: (svg.top - coords.top + 270) / 2})
-        if(!this.alreadyZoomed) this.svgPanZoom.zoom(2.2)
+        if(!this.alreadyZoomed) {
+          this.svgPanZoom.zoom(2.2)
+          this.svgPanZoom.panBy({x: 460+(-coords.left + 250) / 2, y: 50+(svg.top - coords.top + 270) / 2})
+        } else {
+          this.svgPanZoom.panBy({x: (-coords.left + 250) / 2, y: (svg.top - coords.top + 270) / 2})
+        }
         this.alreadyZoomed = true
       }
     }
