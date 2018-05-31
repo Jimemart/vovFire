@@ -1530,7 +1530,7 @@
 
 <script>
 import SvgPanZoom from 'vue-svg-pan-zoom'
-
+import { setColorsInMap } from '../../helpers/map'
 export default {
   data () {
     return {
@@ -1553,13 +1553,7 @@ export default {
   },
   watch: {
     selectedCountries(n, o) {
-        n.forEach((elem, index) => {
-          const inMap = document.getElementById(`${elem.code}`)
-          document.getElementById(`linear${index}`).children[0].setAttribute('stop-color', elem.firstColor)
-          document.getElementById(`linear${index}`).children[1].setAttribute('stop-color', elem.secondColor)
-          inMap.style.fill= `url(#linear${index})`
-          inMap.style.stroke = 'white'
-        })
+      setColorsInMap(n)
     },
     centerCountry(n, o) {
       if (n) {
@@ -1571,6 +1565,9 @@ export default {
         this.alreadyZoomed = true
       }
     }
+  },
+  mounted () {
+    setColorsInMap(this.selectedCountries)
   }
 }
 </script>

@@ -1,6 +1,6 @@
 <template lang="html">
   <div id="next">
-    <div  :class="status" @click="navigate">
+    <div :class="status" @click="navigate">
       <q-icon name="trending_flat"/>
     </div>
   </div>

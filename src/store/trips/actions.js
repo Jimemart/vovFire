@@ -9,3 +9,10 @@ export const getTrips = ({ commit}) => {
     })
   })
 }
+
+export const chooseTrip = ({ commit }, value) => {
+  new Promise((resolve, reject) => {
+    commit('CHOOSE_TRIP', value)
+    resolve()
+  })
+}

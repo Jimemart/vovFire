@@ -19,7 +19,8 @@
     <vo-accordion
     :cities="trip.cities">
     </vo-accordion>
-    <vo-action-btn>
+    <vo-action-btn
+      @go="navigate">
     </vo-action-btn>
   </div>
 </q-card>
@@ -30,6 +31,7 @@
 import Slider from '../shared/Slider'
 import Accordion from '../shared/Accordion'
 import ActionBtn from '../shared/ActionBtn'
+import { mapActions } from 'vuex'
 export default {
   props: ['trip'],
   components: {
@@ -37,8 +39,15 @@ export default {
     voAccordion: Accordion,
     voActionBtn: ActionBtn
   },
-  mounted () {
-    console.log(this.trip)
+  methods: {
+    ...mapActions('trips', ['chooseTrip']),
+    navigate () {
+      console.log(this.trip)
+      this.chooseTrip(this.trip)
+      .then(() => {
+        this.$router.push('map-details')
+      })
+    }
   }
 }
 </script>
