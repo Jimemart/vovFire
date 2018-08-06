@@ -1,8 +1,8 @@
 <h1>VOVFIRE</h1>
 <div>
-  <img src="https://i.imgur.com/fpOqE1s.jpg" width="400px" style="display:inline-block;"/>
-  <img src="https://i.imgur.com/VfJzb2h.jpg" width="400px"style="display:inline-block;"/>
-  <img src="https://i.imgur.com/uojybzW.jpg" width="400px"style="display:inline-block;"/>
+  <img src="https://i.imgur.com/fpOqE1s.jpg" width="250px" style="display:inline-block;"/>
+  <img src="https://i.imgur.com/VfJzb2h.jpg" width="250px"style="display:inline-block;"/>
+  <img src="https://i.imgur.com/uojybzW.jpg" width="250px"style="display:inline-block;"/>
 </div>
 
 
